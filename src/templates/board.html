@@ -1,0 +1,153 @@
+
+<div class="container content-board">
+    <div class="col-xs-12 col-sm-8 col-md-6" ng-if="bc.bCreate">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h3 class="panel-title">Create Board</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-12 separator">
+                        <form name="createForm" role="form">
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-book"></i></span>
+                                    <input type="text" class="form-control" placeholder="Title" ng-model="bc.title" required/>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-12 separator">
+                            <div class="col-xs-12 col-md-6"><input type="submit" value="Create" class="btn btn-primary btn-block btn-sm" ng-disabled="createForm.$invalid" ng-click="bc.actions.addToBoards()"></div>
+                            <div class="col-xs-12 col-md-6" ng-click="bc.bCreate=false"><a href="#" class="btn btn-success btn-block btn-sm">Cancel</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+
+    <!-- first column -->
+    <div class="col-sm-12 col-sm-6 col-md-6 col-lg-4 columns trell-column">
+        <div class="task-container">
+            <div class="workflow-title">
+                Backlog
+                <span class="label label-danger pull-right  show " data-display="workflowCount">1</span>
+            </div>
+
+            <div class="ticket task clearfix" data-ng-repeat="board in dashboards track by $index"
+                 drag-container="board" mime-type="application/x-angello-status"
+                 drop-container="" accepts="['application/x-angello-status']"
+                 ng-if="board.status=='Backlog'" style="background: {{colour.hex}}">
+
+                <div drop-target="top" on-drag-enter="storyboard.insertAdjacent(story, data, true)" on-drop="storyboard.finalizeDrop(data)"></div>
+                <div drop-target="bottom" on-drag-enter="storyboard.insertAdjacent(story, data, false)" on-drop="storyboard.finalizeDrop(data)"></div>
+
+                <div class="ticket-issue-details">
+                    <div class="media">
+                        <div class="media-body">
+                            <div class="media-heading">
+                                <div class="ticket-issue-header">
+                                    <i class="fa fa-times-circle"></i>
+                                    <a href="http://dev2.mobile.co/projects/browse/MOB-1712" data-browse="browse">
+                                        <b>MOB-1712</b>
+                                    </a>
+                                    <span class="ticket-issue-time timeago line-block">7 months ago</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="ticket-issue-title"><span class="label label-default">{{board.status}}</span> {{board.title}}</p>
+                        <dropdown placeholder="Colour..." list="colours" selected="colour" property="name"></dropdown>
+
+                    </div>
+                </div>
+            </div>
+            <div
+                    class="emptystatus"
+                    drop-container="" accepts="['application/x-angello-status']"
+                    on-drop="storyboard.finalizeDrop(data)"
+                    on-drag-enter="storyboard.changeStatus(data, status)"
+                    ng-if="storyboard.isEmptyStatus(status)">
+            </div>
+        </div>
+    </div>
+
+    <!-- second column -->
+
+    <div class="col-sm-12 col-sm-6 col-md-6 col-lg-4 columns trell-column">
+        <div class="task-container">
+            <div class="workflow-title">
+                In Progress
+                <span class="label label-danger pull-right  show " data-display="workflowCount">1</span>
+            </div>
+            <!--- TASKS -->
+            <div class="ticket blue task clearfix" data-ng-repeat="board in dashboards track by $index"
+                 drag-container="board" mime-type="application/x-angello-status"
+                 drop-container="" accepts="['application/x-angello-status']"
+                 ng-if="board.status=='In Progress'" style="background: {{colour.hex}}">
+                <div class="ticket-issue-details">
+                    <div class="media">
+                        <div class="media-body">
+                            <div class="media-heading">
+                                <div class="ticket-issue-header">
+                                    <i class="fa fa-times-circle"></i>
+                                    <a href="http://dev2.mobile.co/projects/browse/MOB-1712" data-browse="browse">
+                                        <b>MOB-1712</b>
+                                    </a>
+                                    <span class="ticket-issue-time timeago line-block">7 months ago</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="ticket-issue-title"><span class="label label-default">{{board.status}}</span> {{board.title}}</p>
+                        <dropdown placeholder="Colour..." list="colours" selected="colour" property="name"></dropdown>
+                    </div>
+                </div>
+            </div>
+            <div
+                    class="emptystatus"
+                    drop-container="" accepts="['application/x-angello-status']"
+                    on-drop="storyboard.finalizeDrop(data)"
+                    on-drag-enter="storyboard.changeStatus(data, status)"
+                    ng-if="storyboard.isEmptyStatus(status)">
+            </div>
+        </div>
+    </div>
+
+
+    <!-- third column gsdg-->
+
+    <div class="col-sm-12 col-sm-6 col-md-6 col-lg-4 columns trell-column">
+        <div class="task-container">
+            <div class="workflow-title">
+                Done
+                <span class="label label-danger pull-right  show " data-display="workflowCount">1</span>
+            </div>
+            <!--- TASKS -->
+            <div class="ticket red task clearfix" data-ng-repeat="board in dashboards track by $index" ng-if="board.status=='Done'" style="background: {{colour.hex}}">
+                <div class="ticket-issue-details">
+                    <div class="media">
+                        <div class="media-body">
+                            <div class="media-heading">
+                                <div class="ticket-issue-header">
+                                    <i class="fa fa-times-circle"></i>
+                                    <a href="http://dev2.mobile.co/projects/browse/MOB-1712" data-browse="browse">
+                                        <b>MOB-1712</b>
+                                    </a>
+                                    <span class="ticket-issue-time timeago line-block">7 months ago</span>
+
+                                </div>
+                            </div>
+                        </div>
+                        <p class="ticket-issue-title"><span class="label label-default">{{board.status}}</span> {{board.title}}</p>
+                        <dropdown placeholder="Colour..." list="colours" selected="colour" property="name"></dropdown>
+                    </div>
+                </div>
+            </div>                                                                                                                                                                                                                                                                                                                                                                                                    <!-- END TASKS -->
+        </div>
+    </div>

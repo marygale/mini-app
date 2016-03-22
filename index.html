@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class="no-js" dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en" ng-app="app">
+<html ng-app="app">
 <head>
 
     <!-- START META -->
@@ -14,27 +14,17 @@
     <!-- END META -->
 
 
-    <link rel="stylesheet" type="text/css" href="css/bootstrap.no-icons.min.css">
-    <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
-    <link rel="stylesheet" type="text/css" href="css/font-awesome.css">
-    <link rel="stylesheet" type="text/css" href="css/style.css" media="screen" />
-
-    <!--<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>-->
-
-    <!-- AngularJS -->
-
-   <!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.20/angular.min.js"></script>
-    <script type="text/javascript" src="js/app.js"></script>
-    <script type="text/javascript" src="js/directives/directives.js"></script>
-    <script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>-->
-
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.no-icons.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" media="screen" />
 
     <!-- START TITLE -->
     <title>Careshare - Test</title>
 
     <!-- END TITLE -->
 </head>
-<body ng-controller="boardCtrl as bc">
+<body>
 
 <!-- START HEADER -->
 
@@ -52,14 +42,14 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="/"><img src="https://d78fikflryjgj.cloudfront.net/images/50b4ebc64391dc394a38e73aed57f0e2/header-logo.png" class="trell-logo margin-top2"/></a>
+                        <a class="navbar-brand" href="#/"><img src="https://d78fikflryjgj.cloudfront.net/images/50b4ebc64391dc394a38e73aed57f0e2/header-logo.png" class="trell-logo margin-top2"/></a>
                     </div>
                 </div>
                 <div class="col-sm-12 col-sm-9 col-md-9 col-lg-9 toggle-list">
                     <div class="collapse navbar-collapse border-bottom1" id="main-navbar">
                         <div class="col-sm-12 col-sm-9 col-md-9 col-lg-9">
                             <ul class="nav navbar-nav">
-                                <li class="active"><a href="/">Boards</a></li>
+                                <li class="active"><a href="#/dashboard">Boards</a></li>
                                 <li><a ng-click="toggleModal()">Create new board</a></li>
                                 <li ><a href="/trendings">Clear board</a></li>
                             </ul>
@@ -94,138 +84,11 @@
 </header>
 <!-- END HEADER -->
 
-
-<div class="container content-board">
-    <div class="col-xs-12 col-sm-8 col-md-6" ng-if="bc.bCreate">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <h3 class="panel-title">Create Board</h3>
-            </div>
-            <div class="panel-body">
-                <div class="row">
-                    <div class="col-xs-12 col-sm-12 col-md-12 separator">
-                        <form name="createForm" role="form">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-addon"><i class="fa fa-book"></i></span>
-                                    <input type="text" class="form-control" placeholder="Title" ng-model="bc.title" required/>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <div class="panel-footer">
-                    <div class="row">
-                        <div class="col-xs-12 col-sm-12 col-md-12 separator">
-                            <div class="col-xs-12 col-md-6"><input type="submit" value="Create" class="btn btn-primary btn-block btn-sm" ng-disabled="createForm.$invalid" ng-click="bc.actions.addToBoards()"></div>
-                            <div class="col-xs-12 col-md-6" ng-click="bc.bCreate=false"><a href="#" class="btn btn-success btn-block btn-sm">Cancel</a></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-    </div>
-
-    <div ng-view=""></div>
+<div ng-view></div>
 
 
-<!-- first column -->
-    <div class="col-sm-12 col-sm-6 col-md-6 col-lg-4 columns trell-column">
-        <div class="task-container">
-            <div class="workflow-title">
-                Backlog
-                <span class="label label-danger pull-right  show " data-display="workflowCount">1</span>
-            </div>
-
-            <div class="ticket task clearfix" data-ng-repeat="board in dashboards track by $index" ng-if="board.status=='Backlog'" style="background: {{colour.hex}}">
-                <div class="ticket-issue-details">
-                    <div class="media">
-                        <div class="media-body">
-                            <div class="media-heading">
-                                <div class="ticket-issue-header">
-                                    <i class="fa fa-times-circle"></i>
-                                    <a href="http://dev2.mobile.co/projects/browse/MOB-1712" data-browse="browse">
-                                        <b>MOB-1712</b>
-                                    </a>
-                                    <span class="ticket-issue-time timeago line-block">7 months ago</span>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="ticket-issue-title"><span class="label label-default">{{board.status}}</span> {{board.title}}</p>
-                        <dropdown placeholder="Colour..." list="colours" selected="colour" property="name"></dropdown>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- second column -->
-
-    <div class="col-sm-12 col-sm-6 col-md-6 col-lg-4 columns trell-column">
-        <div class="task-container">
-            <div class="workflow-title">
-                In Progress
-                <span class="label label-danger pull-right  show " data-display="workflowCount">1</span>
-            </div>
-            <!--- TASKS -->
-            <div class="ticket blue task clearfix" data-ng-repeat="board in dashboards track by $index" ng-if="board.status=='In Progress'" style="background: {{colour.hex}}">
-                <div class="ticket-issue-details">
-                    <div class="media">
-                        <div class="media-body">
-                            <div class="media-heading">
-                                <div class="ticket-issue-header">
-                                    <i class="fa fa-times-circle"></i>
-                                    <a href="http://dev2.mobile.co/projects/browse/MOB-1712" data-browse="browse">
-                                        <b>MOB-1712</b>
-                                    </a>
-                                    <span class="ticket-issue-time timeago line-block">7 months ago</span>
-                                </div>
-                            </div>
-                        </div>
-                        <p class="ticket-issue-title"><span class="label label-default">{{board.status}}</span> {{board.title}}</p>
-                        <dropdown placeholder="Colour..." list="colours" selected="colour" property="name"></dropdown>
-                    </div>
-                </div>
-            </div>                                                                                                                                                                                                                                                                                                                                                                                                    <!-- END TASKS -->
-        </div>
-    </div>
-
-
-    <!-- third column gsdg-->
-
-    <div class="col-sm-12 col-sm-6 col-md-6 col-lg-4 columns trell-column">
-        <div class="task-container">
-            <div class="workflow-title">
-                Done
-                <span class="label label-danger pull-right  show " data-display="workflowCount">1</span>
-            </div>
-            <!--- TASKS -->
-            <div class="ticket red task clearfix" data-ng-repeat="board in dashboards track by $index" ng-if="board.status=='Done'" style="background: {{colour.hex}}">
-                <div class="ticket-issue-details">
-                    <div class="media">
-                        <div class="media-body">
-                            <div class="media-heading">
-                                <div class="ticket-issue-header">
-                                    <i class="fa fa-times-circle"></i>
-                                    <a href="http://dev2.mobile.co/projects/browse/MOB-1712" data-browse="browse">
-                                        <b>MOB-1712</b>
-                                    </a>
-                                    <span class="ticket-issue-time timeago line-block">7 months ago</span>
-
-                                </div>
-                            </div>
-                        </div>
-                        <p class="ticket-issue-title"><span class="label label-default">{{board.status}}</span> {{board.title}}</p>
-                        <dropdown placeholder="Colour..." list="colours" selected="colour" property="name"></dropdown>
-                    </div>
-                </div>
-            </div>                                                                                                                                                                                                                                                                                                                                                                                                    <!-- END TASKS -->
-        </div>
-    </div>
 </div>
 <script src="assets/js/libs/head.load.min.js"></script>
-<script src="assets/js/loadJS.js"></script>
+<script src="assets/js/load.js"></script>
 </body>
 </html>
