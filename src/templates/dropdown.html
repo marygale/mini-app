@@ -4,10 +4,11 @@
         <span class="placeholder" ng-if="isPlaceholder"><i class="fa fa-tasks"></i></span>
     </div>
     <div class="dropdown-list">
-        <div>
+        <div class="dropdown-menu">
             <div ng-repeat="item in list" ng-click="select(item)" ng-class="{ selected: isSelected(item) }">
                 <span>{{property !== undefined ? item[property] : item}}</span>
             </div>
         </div>
     </div>
 </div>
+

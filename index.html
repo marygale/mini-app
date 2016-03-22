@@ -42,7 +42,9 @@
                             <span class="icon-bar"></span>
                             <span class="icon-bar"></span>
                         </button>
-                        <a class="navbar-brand" href="#/"><img src="https://d78fikflryjgj.cloudfront.net/images/50b4ebc64391dc394a38e73aed57f0e2/header-logo.png" class="trell-logo margin-top2"/></a>
+                        <a class="navbar-brand" href="#/">
+                            <img src="https://d78fikflryjgj.cloudfront.net/images/50b4ebc64391dc394a38e73aed57f0e2/header-logo.png" class="trell-logo margin-top2"/>
+                        </a>
                     </div>
                 </div>
                 <div class="col-sm-12 col-sm-9 col-md-9 col-lg-9 toggle-list">
@@ -51,7 +53,7 @@
                             <ul class="nav navbar-nav">
                                 <li class="active"><a href="#/dashboard">Boards</a></li>
                                 <li><a ng-click="toggleModal()">Create new board</a></li>
-                                <li ><a href="/trendings">Clear board</a></li>
+                                <li ><a href="#/clear">Clear board</a></li>
                             </ul>
                         </div>
 
@@ -62,25 +64,7 @@
         </div>
         <!-- /.container-fluid -->
     </nav>
-    <!-- subnav here -->
-    <div class="navbar navbar-fixed-top subnav categories_box_margins" id="categories">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-12 col-md-7 sub_navigation">
-                    <ul class="nav navbar-nav">
-                        <li>
-                            <button class="btn btn-primary-outline" ng-click="bc.bCreate=true"><i class="fa fa-plus-circle"></i>  Create new board</button>
-                        </li>
-                        <li>
-                            <button class="btn btn-primary-outline"><i class="fa fa-times-circle-o"></i>  Clear board</button>
-                        </li>
 
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-    </div>
 </header>
 <!-- END HEADER -->
 

@@ -1,6 +1,27 @@
 
+<!-- subnav here -->
+<div class="navbar navbar-fixed-top subnav categories_box_margins" id="categories">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-7 sub_navigation">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <button class="btn btn-primary-outline" ng-click="bc.bCreate=true"><i class="fa fa-plus-circle"></i>  Create new board</button>
+                    </li>
+                    <li>
+                        <button class="btn btn-primary-outline"><i class="fa fa-times-circle-o"></i>  Clear board</button>
+                    </li>
+
+                </ul>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
 <div class="container content-board">
-    <div class="col-xs-12 col-sm-8 col-md-6" ng-if="bc.bCreate">
+    <div class="col-xs-12 col-sm-8 col-md-6 animate-show" ng-if="bc.bCreate">
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h3 class="panel-title">Create Board</h3>
@@ -21,8 +42,10 @@
                 <div class="panel-footer">
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-12 separator">
-                            <div class="col-xs-12 col-md-6"><input type="submit" value="Create" class="btn btn-primary btn-block btn-sm" ng-disabled="createForm.$invalid" ng-click="bc.actions.addToBoards()"></div>
-                            <div class="col-xs-12 col-md-6" ng-click="bc.bCreate=false"><a href="#" class="btn btn-success btn-block btn-sm">Cancel</a></div>
+                            <div class="col-xs-12 col-md-6">
+                                <button type="button" class="btn btn-primary btn-block btn-sm" ng-disabled="createForm.$invalid" ng-click="bc.actions.addToBoards()">Create</button>
+                            </div>
+                            <div class="col-xs-12 col-md-6" ng-click="bc.bCreate=false"><button class="btn btn-success btn-block btn-sm">Cancel</button></div>
                         </div>
                     </div>
                 </div>
@@ -31,6 +54,64 @@
 
     </div>
 
+
+
+    <!--<div class="col-sm-12 col-sm-6 col-md-6 col-lg-4 columns trell-column" data-ng-repeat="status in bc.status">
+        <div class="task-container">
+            <div class="workflow-title status">
+                {{status.name}}
+                <span class="label label-danger pull-right  show " data-display="workflowCount">1</span>
+            </div>
+            <div class="ticket task clearfix" ng-repeat="board in dashboards | filter: {status:status.name}"
+                 drag-container="board" mime-type="application/x-angello-status"
+                 drop-container="" accepts="['application/x-angello-status']" style="background: {{colour.hex}}">
+
+                <div drop-target="top" on-drag-enter="bc.actions.insertAdjacent(story, data, true)" on-drop="bc.actions.finalizeDrop(data)"></div>
+                <div drop-target="bottom" on-drag-enter="bc.actions.insertAdjacent(story, data, false)" on-drop="bc.actions.finalizeDrop(data)"></div>
+
+                <div class="ticket-issue-details">
+                    <div class="media">
+                        <div class="media-body">
+                            <div class="media-heading">
+                                <div class="ticket-issue-header">
+                                    <i class="fa fa-times-circle" ng-click="bc.actions.toTrash($index)"></i>
+                                    <a href="http://dev2.mobile.co/projects/browse/MOB-1712" data-browse="browse">
+                                        <b>MOB-1712</b>
+                                    </a>
+                                    <span class="ticket-issue-time timeago line-block">7 months ago</span>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="ticket-issue-title"><span class="label label-default">{{board.status}}</span> {{board.title}}</p>
+                        <dropdown placeholder="Colour..." list="colours" selected="colour" property="name"></dropdown>
+
+                        &lt;!&ndash;<ul class="nav navbar-nav ticket-issue-settings">
+                            <li class="dropdown">
+                                <span href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-tasks"></i></span>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Account Settings <span class="glyphicon glyphicon-cog pull-right"></span></a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">User stats <span class="glyphicon glyphicon-stats pull-right"></span></a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Messages <span class="badge pull-right"> 42 </span></a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Favourites Snippets <span class="glyphicon glyphicon-heart pull-right"></span></a></li>
+                                    <li class="divider"></li>
+                                    <li><a href="#">Sign Out <span class="glyphicon glyphicon-log-out pull-right"></span></a></li>
+                                </ul>
+                            </li>
+                        </ul>&ndash;&gt;
+                    </div>
+                </div>
+            </div>
+            <div    class="emptystatus"
+                    drop-container="" accepts="['application/x-angello-status']"
+                    on-drop="storyboard.finalizeDrop(data)"
+                    on-drag-enter="storyboard.changeStatus(data, status)"
+                    ng-if="storyboard.isEmptyStatus(status)">
+            </div>
+        </div>
+    </div>-->
 
 
     <!-- first column -->
@@ -46,15 +127,15 @@
                  drop-container="" accepts="['application/x-angello-status']"
                  ng-if="board.status=='Backlog'" style="background: {{colour.hex}}">
 
-                <div drop-target="top" on-drag-enter="storyboard.insertAdjacent(story, data, true)" on-drop="storyboard.finalizeDrop(data)"></div>
-                <div drop-target="bottom" on-drag-enter="storyboard.insertAdjacent(story, data, false)" on-drop="storyboard.finalizeDrop(data)"></div>
+                <div drop-target="top" on-drag-enter="bc.actions.insertAdjacent(story, data, true)" on-drop="bc.actions.finalizeDrop(data)"></div>
+                <div drop-target="bottom" on-drag-enter="bc.actions.insertAdjacent(story, data, false)" on-drop="bc.actions.finalizeDrop(data)"></div>
 
                 <div class="ticket-issue-details">
                     <div class="media">
                         <div class="media-body">
                             <div class="media-heading">
                                 <div class="ticket-issue-header">
-                                    <i class="fa fa-times-circle"></i>
+                                    <i class="fa fa-times-circle" ng-click="bc.actions.toTrash($index)"></i>
                                     <a href="http://dev2.mobile.co/projects/browse/MOB-1712" data-browse="browse">
                                         <b>MOB-1712</b>
                                     </a>
@@ -96,7 +177,7 @@
                         <div class="media-body">
                             <div class="media-heading">
                                 <div class="ticket-issue-header">
-                                    <i class="fa fa-times-circle"></i>
+                                    <i class="fa fa-times-circle" ng-click="bc.actions.toTrash($index)"></i>
                                     <a href="http://dev2.mobile.co/projects/browse/MOB-1712" data-browse="browse">
                                         <b>MOB-1712</b>
                                     </a>
@@ -109,8 +190,7 @@
                     </div>
                 </div>
             </div>
-            <div
-                    class="emptystatus"
+            <div  class="emptystatus"
                     drop-container="" accepts="['application/x-angello-status']"
                     on-drop="storyboard.finalizeDrop(data)"
                     on-drag-enter="storyboard.changeStatus(data, status)"
@@ -135,7 +215,7 @@
                         <div class="media-body">
                             <div class="media-heading">
                                 <div class="ticket-issue-header">
-                                    <i class="fa fa-times-circle"></i>
+                                    <i class="fa fa-times-circle" ng-click="bc.actions.toTrash($index)"></i>
                                     <a href="http://dev2.mobile.co/projects/browse/MOB-1712" data-browse="browse">
                                         <b>MOB-1712</b>
                                     </a>

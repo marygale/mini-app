@@ -9,14 +9,20 @@ app.config(['$routeProvider',
         $routeProvider.
             when('/dashboard', {
                 templateUrl: 'src/templates/board.html',
-                controller: 'boardCtrl'
+                controller: 'boardCtrl',
+                controllerAs: 'bc',
             }).
             when('/phones/:phoneId', {
                 templateUrl: 'partials/phone-detail.html',
                 controller: 'PhoneDetailCtrl'
             }).
             otherwise({
-                redirectTo: '/'
+                redirectTo: '/dashboard'
             });
     }]);
+app.value('Status', [
+    {name: 'Backlog'},
+    {name: 'In Progress'},
+    {name: 'Done'}
+]);
 angular.module('appController', []);
