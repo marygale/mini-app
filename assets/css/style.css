@@ -1,0 +1,334 @@
+/********* Header *********/
+#header .trell-logo{
+    margin-top: -10px;
+}
+
+/********************* NAVIGATION MENU ********************/
+.custom_header {
+    background-color: #000000;
+    border-color: #E63A46;
+    box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
+    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.15);
+    background-image:none;
+}
+.custom_header .navbar-brand {
+    color: #FFFFFF;
+}
+.custom_header .navbar-nav > li > a {
+    color: #FFFFFF;
+    cursor:pointer;
+}
+.custom_header .navbar-nav > li > a:hover {
+    color: #FFFFFF;
+}
+.custom_header .navbar-nav > .active > a, .custom_header .navbar-nav > .active > a:hover {
+    background-color: #E63A46;
+    color: #FFFFFF;
+    background-image:none;
+}
+
+/********************* SUBNAVIGATION MENU ********************/
+.subnav {
+    width: 100%;
+    top: 50px;
+    z-index: 600;
+
+}
+.subnav ul.nav.navbar-nav{
+    margin-top:20px;
+
+}
+.subnav .navbar-nav li{
+    margin-left: 5px;
+}
+.btn-primary-outline {
+    color: #007aff;
+    border: 1px solid #007aff;
+}
+
+
+/********************* BODY ********************/
+
+body{
+    background: #e8e8e8;
+}
+.content-board{
+    margin-top: 100px;
+    padding: 40px 0;
+}
+
+.column .board-container{
+
+}
+.workflow-title {
+    padding: 10px 10px 5px 10px;
+    font-size: 20px;
+    font-weight: bold;
+    border-bottom: 1px dashed #E2E2E2;
+}
+.columns {
+    height: 100%;
+    display: table-cell;
+    float: none;
+}
+
+.columns:last-child .task-container .ticket{
+    text-decoration: line-through;
+    color: #C33C3C;
+}
+
+.columns.trell-column:last-child .task-container .ticket-issue-title {
+    color: #000;
+    font-style: italic;
+}
+
+.columns .task-container {
+    background: #F5F5F5;
+    transition: ease-in 0.2s;
+    border: 2px solid transparent;
+    margin-bottom: 20px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+
+}
+
+.ticket {
+    min-width: 315px;
+    margin: 10px;
+    background: #FFF;
+    padding: 10px 10px 5px 10px;
+    font-size: 14px;
+    border: 1px solid #EAEAEA;
+    box-shadow: 0px 3px 6px -2px rgba(184,184,184,0.41);
+    position: relative;
+}
+.ticket.blue{
+    background: #026AA7;
+}
+.ticket.red{
+    background:#C4332F;
+}
+.ticket.green{
+    background: #4BA24B;
+}
+.ticket .ticket-issue-header .fa {
+    position: absolute;
+    left: -2px;
+    top: -4px;
+    height: 17px;
+    opacity: 1 !important;
+    border-radius: 0 0 4px 4px;
+}
+.ticket .ticket-issue-header .fa:before {
+    padding: 0 3px;
+}
+
+.ticket:hover,
+.ticket:active {
+    cursor: pointer;
+}
+
+.ticket.bug .ticket-issue-header .fa  {
+    background: #F5ABA8;
+    border: 1px solid #F59797;
+}
+
+.ticket.bug .ticket-issue-header .fa:before {
+    color: #AB1111;
+}
+
+.ticket.task .ticket-issue-header .fa  {
+    background: #6ED9FF;
+    border: 1px solid #6FB4EF;
+}
+
+.ticket.task .ticket-issue-header .fa:before{
+    color: #29819E;
+}
+
+.ticket .ticket-issue-settings {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    /*overflow: hidden;*/
+}
+
+.ticket .ticket-issue-time {
+    font-size: 11px;
+    color: #AAA;
+    vertical-align: top;
+    padding-top: 3px;
+    display: inline-block;
+}
+
+.ticket .ticket-issue-assignee>img {
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    background: #F1F1F1;
+}
+
+.ticket .ticket-issue-title {
+    width: 75%;
+    font-size: 12px;
+    padding-left: 5px;
+    word-break: break-all;
+}
+
+.ticket .ticket-issue-header .fa {
+    position: absolute;
+    left: -2px;
+    top: -4px;
+    height: 17px;
+    opacity: 1 !important;
+    border-radius: 0 0 4px 4px;
+}
+.ticket .ticket-issue-header .fa:before {
+    padding: 0 3px;
+}
+
+.ticket:hover,
+.ticket:active {
+    cursor: pointer;
+}
+
+.ticket.bug .ticket-issue-header .fa  {
+    background: #F5ABA8;
+    border: 1px solid #F59797;
+}
+
+.ticket.bug .ticket-issue-header .fa:before {
+    color: #AB1111;
+}
+
+.ticket.task .ticket-issue-header .fa  {
+    background: #6ED9FF;
+    border: 1px solid #6FB4EF;
+}
+
+.ticket.task .ticket-issue-header .fa:before{
+    color: #29819E;
+}
+
+.fa-times-circle{
+    display: none;
+}
+.ticket.task:hover .fa-times-circle{
+    display: block;
+}
+
+
+/********************* DROPDOWN MENU ********************/
+dropdown {
+    /*float: left;
+    display: block;
+    width: 250px;*/
+    position: absolute;
+    top: 0;
+    right: 10px;
+}
+dropdown > div {
+    float: left;
+    width: 100%;
+}
+dropdown > div > div.dropdown-display {
+    float: left;
+    width: 100%;
+    /*background: white;*/
+    height: 40px;
+    cursor: pointer;
+    /*border: solid 1px #dddddd;
+    box-sizing: border-box;*/
+}
+dropdown > div > div.dropdown-display > * {
+    float: left;
+    height: 100%;
+    height: 40px;
+    line-height: 40px !important;
+    display: inline-block;
+    vertical-align: middle;
+}
+dropdown > div > div.dropdown-display > span {
+    font-size: 14px;
+    width: 100%;
+    position: relative;
+    box-sizing: border-box;
+    padding-right: 34px;
+    padding-left: 10px;
+}
+dropdown > div > div.dropdown-display > span.placeholder {
+    color: #428bca;
+    font-weight: bold;
+}
+dropdown > div > div.dropdown-display > i {
+    position: relative;
+    width: 14px;
+    margin-left: -24px;
+    font-size: 1.125em;
+    font-weight: bold;
+    padding-right: 10px;
+    text-align: right;
+}
+dropdown > div > div.dropdown-list {
+    float: left;
+    position: relative;
+    width: 100%;
+    transform: scale(1, 0);
+    transition: transform ease 250ms;
+}
+dropdown > div > div.dropdown-list > div {
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    cursor: pointer;
+    background: white;
+}
+dropdown > div > div.dropdown-list > div > div {
+    float: left;
+    width: 100%;
+    padding: 0 10px;
+    font-size: 14px;
+    box-sizing: border-box;
+    border: solid 1px #dddddd;
+    border-top: none;
+}
+dropdown > div > div.dropdown-list > div > div:hover {
+    background: #F0F0F0;
+}
+dropdown > div > div.dropdown-list > div > div.selected {
+    background: #2875c7;
+    color: white;
+}
+dropdown > div > div.dropdown-list > div > div > * {
+    height: 40px;
+    line-height: 40px !important;
+    display: inline-block;
+    vertical-align: middle;
+}
+dropdown > div > div.dropdown-list > div > div > span {
+    float: left;
+    width: 100%;
+    position: relative;
+    padding-right: 30px;
+    box-sizing: border-box;
+    color: #333;
+
+}
+dropdown > div > div.dropdown-list > div > div > i {
+    float: left;
+    width: 20px;
+    margin-left: -20px;
+    display: none;
+}
+dropdown > div > div.dropdown-list > div > div.selected > i {
+    display: inline-block;
+}
+dropdown > div.show > div.dropdown-list {
+    transform: scale(1, 1);
+}
+
+
+
+.media, .media-body {overflow: visible;}
+
+
+
