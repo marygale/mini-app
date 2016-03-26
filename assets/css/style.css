@@ -191,7 +191,8 @@ a.open-panel:hover {
     margin: 0 0 10px 0;
     padding: 0 10px;
     background: #e91b23;
-    font-size: 16px;
+    font-size: 14px;
+    font-weight: bold;
     color: #fff
 }
 

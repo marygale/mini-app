@@ -14,22 +14,12 @@
             <label>Color</label>
             <div class="input-group">
                 <span class="input-group-addon"><i class="fa fa-crosshairs"></i></span>
-                <select class="form-control" ng-init="bc.card.color = colours[0]"
+                <select class="form-control" ng-init="bc.card.color = bc.card.color == null ? colours[0] : bc.card.color"
                         ng-model="bc.card.color"
                         ng-options="option for option in colours">
                 </select>
             </div>
         </div>
-        <!--<div class="form-group">
-            <label>Color</label> {{bc.card.color.name}}
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-crosshairs"></i></span>
-                <select class="form-control" ng-init="bc.card.color = colours[0]"
-                        ng-model="bc.card.color"
-                        ng-options="option.name for option in colours">
-                </select>
-            </div>
-        </div>-->
     </form>
 </div>
 <div class="ngdialog-buttons">
@@ -38,43 +28,3 @@
 </div>
 
 
-
-<!--
-<div class="ngdialog-message">
-    <h4 ng-if="action=='edit'"><i class="fa fa-pencil"></i> Edit Story</h4>
-    <h4 ng-if="action=='add'"><i class="fa fa-file-text-o"></i> Add Story</h4>
-    <form name="editStory" role="form">
-        <div class="form-group">
-            <label>Title</label>
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-book"></i></span>
-                <input type="text" class="form-control" value="{{story.title}}" ng-model="bc.card.title" required/>
-            </div>
-        </div>
-        <div class="form-group">
-            <label>Color</label>
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-crosshairs"></i></span>
-                <select class="form-control" ng-init="bc.card.color = colours[0]"
-                        ng-model="bc.card.color"
-                        ng-options="option.name for option in colours">
-                </select>
-            </div>
-        </div>
-        <div class="form-group">
-            <label>Status</label>
-            <div class="input-group">
-                <span class="input-group-addon"><i class="fa fa-certificate"></i></span>
-                <select class="form-control" ng-init="bc.card.status = status[0]"
-                        ng-model="bc.card.status"
-                        ng-options="option.name for option in status">
-                </select>
-            </div>
-        </div>
-
-    </form>
-</div>
-<div class="ngdialog-buttons">
-    <button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog('Cancel')">Cancel</button>
-    <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm('Save')">Save</button>
-</div>-->

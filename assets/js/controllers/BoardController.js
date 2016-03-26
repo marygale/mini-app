@@ -69,7 +69,7 @@ angular.module('appController')
                 });
 
             },
-            'modalToggle': function (action, story, stat) {
+            'modalToggle': function (action, story, stat) {console.log('story.color ',story.color);
                 if (action == 'edit') {
                     vm.card.title = story.title;
                     vm.card.color = story.color;
