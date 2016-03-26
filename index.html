@@ -19,6 +19,11 @@
     <link rel="stylesheet" type="text/css" href="assets/css/font-awesome.css">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css" media="screen" />
 
+    <!-- ngdialog css -->
+    <link rel="stylesheet" href="assets/css/ngDialog/ngDialog.css">
+    <link rel="stylesheet" href="assets/css/ngDialog/ngDialog-theme-default.css">
+
+
     <!-- START TITLE -->
     <title>Careshare - Test</title>
 
@@ -51,9 +56,7 @@
                     <div class="collapse navbar-collapse border-bottom1" id="main-navbar">
                         <div class="col-sm-12 col-sm-9 col-md-9 col-lg-9">
                             <ul class="nav navbar-nav">
-                                <li class="active"><a href="#/dashboard">Boards</a></li>
-                                <li><a ng-click="toggleModal()">Create new board</a></li>
-                                <li ><a href="#/clear">Clear board</a></li>
+                                <li class="active"><a href="#/boards">Boards</a></li>
                             </ul>
                         </div>
 
@@ -68,10 +71,19 @@
 </header>
 <!-- END HEADER -->
 
+
 <div ng-view></div>
 
+<footer class="navbar navbar-default navbar-fixed-bottom custom_header">
+    <div class="container">
+        <p class="navbar-text pull-left">© 2016 - Site Built By Ms. EMJAY
 
-</div>
+        </p>
+       <!-- <a class="btn btn-one btn-lg pull-right" title="" href="" target="blank">
+            <i class="fa fa fa-trash"></i> View Archived
+        </a>-->
+    </div>
+</footer>
 <script src="assets/js/libs/head.load.min.js"></script>
 <script src="assets/js/load.js"></script>
 </body>
