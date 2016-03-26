@@ -22,4 +22,9 @@ open source projects used to work:
 ### Installation
 
 You can download the zip file or clone run the following command to check out a local copy of the code.
+
 $ git clone https://github.com/marygale/mini-app
+
+##### Note:
+
+I created this on ubuntu environment I setup a new workstation by creating a new vhost, I haven't tried running this on windows env locally. You can search google on how to create new vhost
