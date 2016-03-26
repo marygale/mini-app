@@ -11,7 +11,6 @@
                         ng-disabled="!count"><i
                         class="fa fa-refresh"></i> Clear Archive
                 </button>
-                {{archiveList.length}}
                 <ul class="categories">
 
                     <li data-ng-repeat="board in dashboards track by $index" ng-if="board.trash" ng-init="limit = 30">
@@ -36,7 +35,7 @@
                         <li class="pull-left">
                             <a href="javascript:void(0);" class="board-title">{{status.name}}</a>
                         </li>
-                        <li class="dropdown pull-right">
+                        <li class="dropdown pull-right" title="Settings" data-toggle="tooltip">
                             <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><i
                                     class="fa fa-lg fa-gear"></i> <b class="caret"></b></a>
                             <ul class="dropdown-menu">
@@ -64,7 +63,7 @@
                             <div class="card-content {{board.color}}">
                                 <div class="card-header">
                                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
-                                            ng-click="bc.actions.toTrash(board, false)">
+                                            ng-click="bc.actions.toTrash(board, false)" title="Click to delete this card" data-toggle="tooltip">
                                         ×
                                     </button>
                                     <script type="text/ng-template" id="modalDialogId">
@@ -84,7 +83,7 @@
                                     </script>
 
                                     <a class="card-title" ng-click="bc.actions.modalToggle('edit', board)"
-                                       ng-init="limit = 85">
+                                       ng-init="limit = 85" title="Click to edit this card" data-toggle="tooltip">
                                         {{board.title | limitTo: limit}}
                                         <i ng-show="board.title.length > limit"
                                            href ng-click="limit=board.title.length"> ...
