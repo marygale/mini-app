@@ -34,7 +34,7 @@ body{
 /********************* NAVIGATION MENU ********************/
 
 .content-board{
-    margin-top: 100px;
+    margin-top: 84px;
     padding: 40px 0;
 }
 .content-board .well{
@@ -318,7 +318,7 @@ footer .btn-lg {
 }
 
 .emptystatus {
-    min-height: 12vh;
+    min-height: 2vh;
 }
 
 .btn-primary {
