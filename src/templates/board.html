@@ -1,0 +1,98 @@
+<div class="container content-board">
+    <div id="divStyleSwitcher" class="style-switcher-slidebar {{bc.archive.class}}"><!--opened-->
+        <a id="cmdShowStyleSwitcher" class="open-panel" ng-click="bc.actions.showArchiveBox(bc.archive.show)"><i
+                class="fa fa-trash"></i></a>
+
+        <div class="switch-panel">
+            <h3>Archive List </h3>
+
+            <div class="panel-section widget">
+                <button ng-click="bc.actions.superDelete()" class="btn btn-block btn-primary" id="reset-smart-widget" ng-disabled="!count"><i
+                        class="fa fa-refresh"></i> Clear Archive</button> {{archiveList.length}}
+                <ul class="categories">
+
+                    <li data-ng-repeat="board in dashboards track by $index" ng-if="board.trash" ng-init="limit = 30">
+                        {{board.title | limitTo  :limit}} <i ng-show="board.title.length > limit"> ...</i>
+                    </li>
+                </ul>
+            </div>
+
+        </div>
+    </div>
+    <!-- Top Header -->
+
+
+    <article class="col-xs-12 col-sm-4 col-md-4 col-lg-4" ng-repeat="status in statuses">
+
+        <div class="widget well">
+            <!-- widget div-->
+            <div role="content">
+                <!-- widget content -->
+                <div class="widget-body">
+                    <ul class="nav nav-tabs tabs-pull-right bordered">
+                        <li class="pull-left">
+                            <a href="javascript:void(0);" class="board-title">{{status.name}}</a>
+                        </li>
+                        <li class="dropdown pull-right">
+                            <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-lg fa-gear"></i> <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a ng-click="bc.actions.modalToggle('add', '', status.name);">Add Card</a>
+                                </li>
+                                <li>
+                                    <a ng-click="bc.actions.toTrash(status.name, true)">Clear All Card in this List</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="tab-content" data-ng-repeat="board in dashboards |filter:status.name" ng-if="!board.trash"
+                         drag-container="board" mime-type="application/x-angello-status"
+                         class="board my-repeat-animation"
+                         drop-container="" accepts="['application/x-angello-status']" >
+
+                        <div drop-target="top" on-drag-enter="bc.actions.insertAdjacent(board, data, true)" on-drop="bc.actions.finalizeDrop(data)"></div>
+                        <div drop-target="bottom" on-drag-enter="bc.actions.insertAdjacent(board, data, false)" on-drop="bc.actions.finalizeDrop(data)"></div>
+
+                        <div class="cardbox">
+                            <div class="card-content {{board.color}}">
+                                <div class="card-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="bc.actions.toTrash(board, false)">
+                                        ×
+                                    </button>
+                                    <script type="text/ng-template" id="modalDialogId">
+                                        <div class="ngdialog-content" role="document">
+                                            <p id="ngdialog6-aria-describedby">Are you sure you want to delete this card?</p>
+                                            <div class="ngdialog-buttons"><button type="button" class="ngdialog-button ngdialog-button-secondary" ng-click="closeThisDialog(0)">No</button>
+                                                <button type="button" class="ngdialog-button ngdialog-button-primary" ng-click="confirm(1)">Yes</button>
+                                            </div>
+                                        </div>
+                                    </script>
+
+                                    <a class="card-title" ng-click="bc.actions.modalToggle('edit', board)" ng-init="limit = 85; moreShown = false">
+                                        {{board.title | limitTo: limit}}
+                                        <a ng-show="board.title.length > limit"
+                                           href ng-click="limit=board.title.length; moreShown = true">  ...
+                                        </a>
+                                     </a>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                            class="emptystatus"
+                            drop-container="" accepts="['application/x-angello-status']"
+                            on-drop="bc.actions.finalizeDrop(data)"
+                            on-drag-enter="bc.actions.changeStatus(data, status)"
+                            ng-if="bc.actions.isEmptyStatus(status)">
+                    </div>
+
+                </div>
+            </div>
+            <!-- end widget div -->
+        </div>
+
+    </article>
+
+</div>
